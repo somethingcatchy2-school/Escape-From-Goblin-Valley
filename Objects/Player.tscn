@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://bhbuepcfs81kx"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMove.gd" id="1_8dtka"]
+[ext_resource type="Texture2D" uid="uid://dn56py3p2ebcc" path="res://Art/ase.png" id="1_i5ea0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt8ux"]
+atlas = ExtResource("1_i5ea0")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpf22"]
+atlas = ExtResource("1_i5ea0")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atves"]
+atlas = ExtResource("1_i5ea0")
+region = Rect2(0, 7, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73kla"]
+atlas = ExtResource("1_i5ea0")
+region = Rect2(7, 7, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l72mp"]
+atlas = ExtResource("1_i5ea0")
+region = Rect2(0, 14, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mbxmi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt8ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpf22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atves")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73kla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l72mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l72mp")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3tac"]
+size = Vector2(70.4116, 84.2649)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_8dtka")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+texture_filter = 1
+position = Vector2(-3.8147e-06, 3)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_mbxmi")
+animation = &"Walking"
+autoplay = "Walking"
+frame_progress = 0.0175779
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.25)
+scale = Vector2(0.198831, -0.195811)
+shape = SubResource("RectangleShape2D_r3tac")
+debug_color = Color(0.0862745, 0.313726, 0.564706, 0)
